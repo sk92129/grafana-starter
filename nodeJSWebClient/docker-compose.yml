@@ -1,0 +1,10 @@
+  nodejs-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.nodejs
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+    networks:
+      - grafana-network
