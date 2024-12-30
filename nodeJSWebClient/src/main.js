@@ -13,7 +13,26 @@ app.get('/', (req, res) => {
     method: req.method,
     userAgent: req.headers['user-agent'],
   });
-  res.send('Hello World!');
+  const currentTime = new Date().toISOString();
+  const strTime = currentTime.split('T')[1].split('.')[0];
+  const msg = `Hello World! ${strTime}`;
+  res.send(msg);
+});
+
+app.get('/flush', async (req, res) => {
+  try {
+    logger.info('Homepage accessed flushed', {
+      path: req.path,
+      method: req.method,
+      userAgent: req.headers['user-agent'],
+    });
+    
+    await logger.flush();  // Now has a 5-second timeout
+    res.send("Flushed successfully");
+  } catch (error) {
+    console.error('Flush error:', error);
+    res.status(500).send(`Flush failed: ${error.message}`);
+  }
 });
 
 app.get('/error', (req, res) => {
