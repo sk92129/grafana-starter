@@ -6,8 +6,11 @@
 docker-compose up -d
 
 Grafana at http://localhost:3000 (username: admin, password: admin123)
+
 Prometheus at http://localhost:9090
+
 Loki at http://localhost:3100
+
 Tempo at http://localhost:3200
 
 
