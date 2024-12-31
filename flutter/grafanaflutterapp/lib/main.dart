@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-
-
+import 'loki_logger.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
 
   runApp(const MyApp());
 }
@@ -35,6 +35,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   //final logger = LokiLogger();
   //final tracer = Tracer();
+
+  final logger = LokiLogger();
+  
+
+
   int _counter = 0;
 
   void _incrementCounter() {
@@ -44,6 +49,16 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {
         _counter++;
       });
+      // Example usage
+      logger.log(
+        "Counter incremented", 
+        labels: {
+          'level': 'info',
+          'app': 'flutter_app',
+          'environment': 'development'
+        }
+      );
+      
 
       // logger.info('Counter incremented', {
       //   'counter_value': _counter,
