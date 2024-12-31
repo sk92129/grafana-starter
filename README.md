@@ -17,17 +17,23 @@ Tempo at http://localhost:3200
 
 ## How to send data to the services:
 
-
+### Logs
 To send data to these services:
 For logs (Loki):
 Use Promtail, Fluentd, or other log shippers
 Configure them to send logs to http://localhost:3100/loki/api/v1/push
+
+### Traces
 For traces (Tempo):
 Configure your application's tracer to send traces to localhost:14250 using Jaeger gRPC protocol
 Supports OpenTelemetry, Jaeger, and Zipkin formats
+
+### Metrics
 For metrics (Prometheus):
 Add scrape configurations to prometheus.yaml
 Use exporters or instrument your application with Prometheus client libraries
+
+
 This setup provides a basic but functional monitoring stack. You can enhance it by:
 Adding more data sources
 Configuring retention policies
