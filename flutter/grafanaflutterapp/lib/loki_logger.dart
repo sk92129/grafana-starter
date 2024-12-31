@@ -7,7 +7,7 @@ class LokiLogger {
   static final LokiLogger _instance = LokiLogger._internal();
   final Queue<LogEntry> _logCache = Queue();
   final int _maxCacheSize = 100; // Adjust this value based on your needs
-  final String _lokiUrl = 'http://localhost:3100/loki/api/v1/push';
+  final String _lokiUrl = 'http://192.168.1.16:3100/loki/api/v1/push';
   Timer? _batchTimer;
 
   factory LokiLogger() {
@@ -74,6 +74,7 @@ class LokiLogger {
       }
     } catch (e) {
       print('Error sending logs to Loki: $e');
+
       // Re-add failed logs back to the queue
       // You might want to implement a more sophisticated retry mechanism
     }
