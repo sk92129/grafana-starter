@@ -39,6 +39,8 @@ Adding service discovery
 
 docker compose logs grafana
 
+docker compose logs -f loki
+
 ### to check if grafana is listening on port 3000:
 
 docker compose exec grafana netstat -tulpn | grep 3000
